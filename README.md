@@ -21,7 +21,7 @@ numenor-react/
 pip install -r requirements.txt
 ```
 
-3. Crie o arquivo `.env` com base em `.env.example`.
+3. Crie o arquivo `.env` com base em `.env.example`. O backend agora lê esse arquivo automaticamente.
 4. Rode as migrations:
 
 ```bash
