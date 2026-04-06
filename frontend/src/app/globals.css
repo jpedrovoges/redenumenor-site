@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraftia.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --background: #06101c;
+  --foreground: #e8f0ff;
+  --surface: rgba(13, 23, 39, 0.86);
+  --surface-strong: #0f1a2b;
+  --surface-muted: #132238;
+  --border: rgba(154, 176, 213, 0.16);
+  --muted: #91a4c2;
+  --accent: #60a5fa;
+  --accent-strong: #2563eb;
+  --success: #10b981;
+  --danger: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top, rgba(37, 99, 235, 0.22), transparent 32%),
+    radial-gradient(circle at right, rgba(16, 185, 129, 0.14), transparent 24%),
+    linear-gradient(180deg, #08111d 0%, #050b14 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.brand-font {
+  font-family: "Minecraft", sans-serif;
+}
+
+.site-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--foreground);
+}
+
+.site-header {
+  background: rgba(6, 16, 28, 0.84);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.site-brand {
+  color: var(--foreground);
+  text-shadow: 0 0 18px rgba(96, 165, 250, 0.2);
+}
+
+.site-nav-link {
+  color: #bfd0ea;
+  transition: color 150ms ease;
+}
+
+.site-nav-link:hover {
+  color: #ffffff;
+}
+
+.site-profile-button {
+  background: rgba(19, 34, 56, 0.9);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.site-profile-button:hover {
+  background: rgba(27, 44, 70, 0.98);
+  border-color: rgba(154, 176, 213, 0.32);
+}
+
+.site-dropdown {
+  background: rgba(10, 18, 32, 0.96);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+}
+
+.site-dropdown-link {
+  color: #dbe6f6;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.site-dropdown-link:hover {
+  background: rgba(37, 99, 235, 0.16);
+  color: #ffffff;
+}
+
+.site-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.site-input,
+.site-textarea,
+.site-file-input {
+  background: rgba(8, 16, 28, 0.96);
+  border: 1px solid rgba(154, 176, 213, 0.18);
+  color: var(--foreground);
+}
+
+.site-input::placeholder,
+.site-textarea::placeholder {
+  color: #6f84a7;
+}
+
+.site-input:focus,
+.site-textarea:focus,
+.site-file-input:focus {
+  outline: none;
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.site-footer {
+  background: rgba(4, 10, 18, 0.92);
+  border-top: 1px solid var(--border);
+}
+
+.site-muted {
+  color: var(--muted);
+}
+
+.site-accent-button {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: #f8fbff;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.26);
+}
+
+.site-accent-button:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+}
+
+.site-success-button {
+  background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+  color: #f4fffb;
+}
+
+.site-success-button:hover {
+  background: linear-gradient(135deg, #059669 0%, #34d399 100%);
+}
+
+.site-danger-button {
+  background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+  color: #fff5f5;
+}
+
+.site-danger-button:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+}
