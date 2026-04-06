@@ -1,76 +1,108 @@
 # Numenor React Ecommerce
 
-This project is an ecommerce application with a Django backend API and a Next.js frontend.
+Projeto com frontend Next.js e backend Django REST.
 
-## Project Structure
+## Estrutura
 
-```
+```text
 numenor-react/
-├── backend/     # Django API
-└── frontend/    # Next.js application
+├── backend/
+└── frontend/
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- Python 3.12+
-- Node.js 22+
-- Django installed
-- npm or yarn
-
-### Backend Setup
-
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Run the Django development server:
-   ```bash
-   python manage.py runserver
-   ```
-
-The backend API will be available at `http://localhost:8000`.
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies (if not already installed):
-   ```bash
-   npm install
-   ```
-
-3. Run the Next.js development server:
-   ```bash
-   npm run dev
-   ```
-
-The frontend will be available at `http://localhost:3000`.
-
-## Development
-
-Both servers are currently running in the background. You can access the application through the frontend at `http://localhost:3000`.
-
-## Building for Production
+## Rodando localmente
 
 ### Backend
+
+1. Entre em `backend/`.
+2. Instale as dependências:
+
 ```bash
-cd backend
-python manage.py collectstatic
+pip install -r requirements.txt
 ```
+
+3. Crie o arquivo `.env` com base em `.env.example`.
+4. Rode as migrations:
+
+```bash
+python manage.py migrate
+```
+
+5. Inicie o servidor:
+
+```bash
+python manage.py runserver
+```
+
+API local: `http://127.0.0.1:8000`
 
 ### Frontend
+
+1. Entre em `frontend/`.
+2. Instale as dependências:
+
 ```bash
-cd frontend
-npm run build
-npm start
+npm install
 ```
 
-## Contributing
+3. Crie o arquivo `.env.local` com base em `.env.example`.
+4. Inicie o frontend:
 
-Please ensure that both backend and frontend are properly tested before committing changes.
+```bash
+npm run dev
+```
+
+App local: `http://localhost:3000`
+
+## Git e repositório
+
+Use a raiz do projeto como único repositório Git.
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+git push -u origin main
+```
+
+## Deploy recomendado
+
+### Frontend
+
+- Suba apenas a pasta `frontend/` no Vercel usando `Root Directory = frontend`.
+- Configure a variável `NEXT_PUBLIC_API_URL` com a URL pública do backend.
+
+### Backend
+
+- Hospede `backend/` em Render, Railway ou Fly.io.
+- Use `DATABASE_URL` apontando para o PostgreSQL do Supabase.
+- Defina também:
+  - `SECRET_KEY`
+  - `DEBUG=False`
+  - `ALLOWED_HOSTS`
+  - `CORS_ALLOWED_ORIGINS`
+  - `CSRF_TRUSTED_ORIGINS`
+
+Comandos de deploy do backend:
+
+```bash
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py collectstatic --noinput
+```
+
+### Supabase
+
+- Crie um projeto PostgreSQL no Supabase.
+- Copie a connection string.
+- Preencha `DATABASE_URL` no backend com algo no formato:
+
+```text
+postgresql://postgres:SENHA@HOST:6543/postgres
+```
+
+## Observação importante
+
+As imagens dos produtos ainda usam armazenamento local em `backend/media/`. Isso funciona localmente, mas em produção o ideal é migrar depois para um storage persistente, como Supabase Storage, Cloudinary ou S3.
